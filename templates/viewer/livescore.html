@@ -1,0 +1,42 @@
+{% extends 'base/main.html' %}
+
+{% block title %}Today's Fixtures{% endblock %}
+
+{% block content %}
+  <h2 class="mb-4">📅 Today's Fixtures & Scores</h2>
+
+  <div class="row row-cols-1 row-cols-md-2 g-4">
+    <div class="col">
+      <div class="card shadow-sm">
+        <div class="card-body">
+          <h5 class="card-title">Arsenal vs Chelsea</h5>
+          <p class="card-text mb-1"><strong>Kickoff:</strong> 18:30</p>
+          <p class="card-text"><strong>Score:</strong> 2 - 1</p>
+          <span class="badge bg-success">Full Time</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="col">
+      <div class="card shadow-sm">
+        <div class="card-body">
+          <h5 class="card-title">Man City vs Liverpool</h5>
+          <p class="card-text mb-1"><strong>Kickoff:</strong> 20:00</p>
+          <p class="card-text"><strong>Score:</strong> 1 - 1</p>
+          <span class="badge bg-danger">LIVE</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="col">
+      <div class="card shadow-sm">
+        <div class="card-body">
+          <h5 class="card-title">Barcelona vs Real Madrid</h5>
+          <p class="card-text mb-1"><strong>Kickoff:</strong> 22:00</p>
+          <p class="card-text"><strong>Score:</strong> - </p>
+          <span class="badge bg-secondary">Upcoming</span>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}
