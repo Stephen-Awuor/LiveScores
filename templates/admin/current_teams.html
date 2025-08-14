@@ -1,4 +1,4 @@
-{% extends 'base/main.html' %}
+{% extends 'base/admin_dashboard.html' %}
 
 {% block title %}Current Teams{% endblock %}
 
@@ -12,7 +12,7 @@
                 <button type="submit" class="btn btn-sm btn-outline-secondary ms-1">Search</button>
             </form>
             {% if user.is_authenticated %}
-                <a href="#" class="btn btn-sm btn-success">+ Add Team</a>
+                <a href="{% url 'add-team' %}" class="btn btn-sm btn-success">+ Add Team</a>
             {% endif %}
         </div>
     </div>
@@ -27,7 +27,7 @@
                 <th>Sport</th>
                 <th>Coach</th>
                 <th>Contact Info</th>
-                {% if user.is_authenticated and user.is_admin %}
+                {% if user.is_authenticated %}
                     <th>Actions</th>
                 {% endif %}
             </tr>
