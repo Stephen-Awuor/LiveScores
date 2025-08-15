@@ -11,8 +11,8 @@
                 <input type="text" name="q" class="form-control form-control-sm" placeholder="Search teams..." value="{{ request.GET.q }}">
                 <button type="submit" class="btn btn-sm btn-outline-secondary ms-1">Search</button>
             </form>
-            {% if user.is_authenticated %}
-                <a href="#" class="btn btn-sm btn-success">+ Add Team</a>
+             {% if user.is_authenticated %}
+                <a href="{% url 'add-team' %}" class="btn btn-sm btn-success">+ Add Team</a>
             {% endif %}
         </div>
     </div>
@@ -20,27 +20,28 @@
     <table class="table table-bordered table-striped">
         <thead class="table-dark">
             <tr>
-                <th>#</th>
+                <th></th>
                 <th>Team/School Name</th>
                 <th>Age Group</th>
                 <th>Gender</th>
                 <th>Sport</th>
                 <th>Coach</th>
                 <th>Contact Info</th>
-                {% if user.is_authenticated and user.is_admin %}
+                {% if user.is_authenticated %}
                     <th>Actions</th>
                 {% endif %}
             </tr>
         </thead>
         <tbody>
+              {% for team in teams %}
             <tr>
-                <td>1</td>
-                <td>Hillcrest</td>
-                <td>Under 13</td>
-                <td>Boys</td>
-                <td>Rugby</td>
-                <td>Lowe</td>
-                <td>Lowe@hillcrest.ac.ke</td>
+                <td>{{ forloop.counter }}</td>
+                <td>{{ teams.team_name }}</td>
+                <td>{{ teams.age_group }}</td>
+                <td>{{ teams.gender}}</td>
+                <td>{{ teams.sport }}</td>
+                <td>{{ teams.coach }}</td>
+                <td>{{ teams.email }}</td>
                 {% if user.is_authenticated %}
                 <td>
                     <a href="#" class="btn btn-sm btn-primary">Edit</a>
@@ -48,6 +49,7 @@
                 </td>
                 {% endif %}
             </tr>
+            {% endfor %}
         </tbody>
     </table>
 </div>

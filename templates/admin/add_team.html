@@ -1,15 +1,16 @@
 {% extends 'base/admin_dashboard.html' %}
 
-{% block title %}Current Teams{% endblock %}
+{% block title %}Add Team{% endblock %}
 
 {% block content %}
 
 <div class="container mt-0">
-    <h2>Add a New Team</h2>
+    <h2>Add Team</h2>
     <form method="post">
         {% csrf_token %}
         {{ form.as_p }}
         <button type="submit" class="btn btn-primary">Add</button>
+        <button type="submit" class="btn btn-danger">Cancel</button>
     </form>
 </div>
 

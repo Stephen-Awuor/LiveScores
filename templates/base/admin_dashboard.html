@@ -35,10 +35,11 @@
 </head>
 <body>
 
+  
   <div class="sidebar">
     <h4 class="text-white text-center mb-4"> Administrator </h4>
     
-    <a href="{% url 'current-teams' %}">Manage Teams</a>
+    <a href="{% url 'current-teams' %}">All Teams</a>
     <a href="#">Add fixtures</a>
     <a href="#">Update Scores</a>
     <a href="#">Manage Previous results</a>
@@ -46,8 +47,55 @@
   </div>
 
   <div class="main-content">
+
+{% if messages %}
+<div class="container mt-3">
+    {% for message in messages %}
+        <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+            {{ message }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    {% endfor %}
+</div>
+{% endif %}
+
     {% block content %}
-    <!-- Content from other templates will appear here -->
+    <h2 class="mb-4">📅 Today's Fixtures & Scores</h2>
+
+  <div class="row row-cols-1 row-cols-md-2 g-4">
+    <div class="col">
+      <div class="card shadow-sm">
+        <div class="card-body">
+          <h5 class="card-title">Arsenal vs Chelsea</h5>
+          <p class="card-text mb-1"><strong>Kickoff:</strong> 18:30</p>
+          <p class="card-text"><strong>Score:</strong> 2 - 1</p>
+          <span class="badge bg-success">Full Time</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="col">
+      <div class="card shadow-sm">
+        <div class="card-body">
+          <h5 class="card-title">Man City vs Liverpool</h5>
+          <p class="card-text mb-1"><strong>Kickoff:</strong> 20:00</p>
+          <p class="card-text"><strong>Score:</strong> 1 - 1</p>
+          <span class="badge bg-danger">LIVE</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="col">
+      <div class="card shadow-sm">
+        <div class="card-body">
+          <h5 class="card-title">Barcelona vs Real Madrid</h5>
+          <p class="card-text mb-1"><strong>Kickoff:</strong> 22:00</p>
+          <p class="card-text"><strong>Score:</strong> - </p>
+          <span class="badge bg-secondary">Upcoming</span>
+        </div>
+      </div>
+    </div>
+  </div>
     {% endblock %}
   </div>
 

@@ -20,7 +20,7 @@
     <table class="table table-bordered table-striped">
         <thead class="table-dark">
             <tr>
-                <th>#</th>
+                <th></th>
                 <th>Team/School Name</th>
                 <th>Age Group</th>
                 <th>Gender</th>
@@ -28,26 +28,28 @@
                 <th>Coach</th>
                 <th>Contact Info</th>
                 {% if user.is_authenticated %}
-                    <th>Actions</th>
+                <th>Actions</th>
                 {% endif %}
             </tr>
         </thead>
         <tbody>
+              {% for team in teams %}
             <tr>
-                <td>1</td>
-                <td>Hillcrest</td>
-                <td>Under 13</td>
-                <td>Boys</td>
-                <td>Rugby</td>
-                <td>Lowe</td>
-                <td>Lowe@hillcrest.ac.ke</td>
+                <td>{{ forloop.counter }}</td>
+                <td>{{ team.team_name }}</td>
+                <td>{{ team.age_group }}</td>
+                <td>{{ team.gender}}</td>
+                <td>{{ team.sport }}</td>
+                <td>{{ team.coach }}</td>
+                <td>{{ team.email }}</td>
                 {% if user.is_authenticated %}
                 <td>
-                    <a href="#" class="btn btn-sm btn-primary">Edit</a>
-                    <a href="#" class="btn btn-sm btn-danger" onclick="return confirm('Delete this team?');">Delete</a>
+                <a href="#" class="btn btn-sm btn-primary">Edit</a>
+                <a href="#" class="btn btn-sm btn-danger" onclick="return confirm('Delete this team?');">Delete</a>
                 </td>
                 {% endif %}
             </tr>
+            {% endfor %}
         </tbody>
     </table>
 </div>

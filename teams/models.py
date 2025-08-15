@@ -8,7 +8,7 @@ class Teams(models.Model):
     gender = models.CharField(max_length=15, blank=True)
     sport = models.CharField(max_length=15, blank=True)
     coach = models.CharField(max_length=15, blank=True)
-    email = models.EmailField(unique=True)
+    email = models.EmailField(unique=False)
     added_on = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):

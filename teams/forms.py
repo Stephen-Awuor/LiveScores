@@ -4,9 +4,8 @@ from .models import Teams
 
 class TeamsForm(forms.ModelForm):
     GENDER_CHOICES = [
-        ('Male', 'Male'),
-        ('Female', 'Female'),
-        ('Mixed', 'Mixed'),
+        ('Boys', 'Boys'),
+        ('Girls', 'Girls'),
     ]
 
     gender = forms.ChoiceField(choices=GENDER_CHOICES, widget=forms.Select(attrs={'class': 'form-control', 'style': 'max-width:500px;'}))
