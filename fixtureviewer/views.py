@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
+from teams.models import Teams
 
 # Create your views here.
 
@@ -14,5 +15,6 @@ def upcoming_matches(request):
     return render(request, 'viewer/upcoming_fixtures.html')
 
 def season_teams(request):
-    return render(request, 'viewer/teams.html')
+    teams = Teams.objects.all()
+    return render(request, 'viewer/teams.html' , {'teams': teams})
 

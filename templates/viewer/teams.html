@@ -25,9 +25,9 @@
                 <th>Age Group</th>
                 <th>Gender</th>
                 <th>Sport</th>
+                {% if user.is_authenticated %}
                 <th>Coach</th>
                 <th>Contact Info</th>
-                {% if user.is_authenticated %}
                     <th>Actions</th>
                 {% endif %}
             </tr>
@@ -36,13 +36,13 @@
               {% for team in teams %}
             <tr>
                 <td>{{ forloop.counter }}</td>
-                <td>{{ teams.team_name }}</td>
-                <td>{{ teams.age_group }}</td>
-                <td>{{ teams.gender}}</td>
-                <td>{{ teams.sport }}</td>
-                <td>{{ teams.coach }}</td>
-                <td>{{ teams.email }}</td>
+                <td>{{ team.team_name }}</td>
+                <td>{{ team.age_group }}</td>
+                <td>{{ team.gender}}</td>
+                <td>{{ team.sport }}</td>
                 {% if user.is_authenticated %}
+                <td>{{ team.coach }}</td>
+                <td>{{ team.email }}</td>
                 <td>
                     <a href="#" class="btn btn-sm btn-primary">Edit</a>
                     <a href="#" class="btn btn-sm btn-danger" onclick="return confirm('Delete this team?');">Delete</a>
