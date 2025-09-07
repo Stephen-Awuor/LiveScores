@@ -5,38 +5,48 @@
 {% block content %}
   <h2 class="mb-4">📅 Today's Fixtures & Scores</h2>
 
-  <div class="row row-cols-1 row-cols-md-2 g-4">
-    <div class="col">
-      <div class="card shadow-sm">
-        <div class="card-body">
-          <h5 class="card-title">Arsenal vs Chelsea</h5>
-          <p class="card-text mb-1"><strong>Kickoff:</strong> 18:30</p>
-          <p class="card-text"><strong>Score:</strong> 2 - 1</p>
-          <span class="badge bg-success">Full Time</span>
+  {% if messages %}
+<div class="container mt-3">
+    {% for message in messages %}
+        <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+            {{ message }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
-      </div>
-    </div>
+    {% endfor %}
+</div>
+{% endif %}
 
-    <div class="col">
-      <div class="card shadow-sm">
-        <div class="card-body">
-          <h5 class="card-title">Man City vs Liverpool</h5>
-          <p class="card-text mb-1"><strong>Kickoff:</strong> 20:00</p>
-          <p class="card-text"><strong>Score:</strong> 1 - 1</p>
-          <span class="badge bg-danger">LIVE</span>
-        </div>
-      </div>
-    </div>
-
-    <div class="col">
-      <div class="card shadow-sm">
-        <div class="card-body">
-          <h5 class="card-title">Barcelona vs Real Madrid</h5>
-          <p class="card-text mb-1"><strong>Kickoff:</strong> 22:00</p>
-          <p class="card-text"><strong>Score:</strong> - </p>
-          <span class="badge bg-secondary">Upcoming</span>
-        </div>
-      </div>
-    </div>
-  </div>
+   <h2>Fixtures</h2>
+  {% if user.is_authenticated %}
+<a href="{% url 'add-fixture' %}">➕ Add Fixture</a>
+ {% endif %}
+<table border="1" cellpadding="8">
+  <tr>
+    <th>Home</th>
+    <th>Away</th>
+    <th>Date</th>
+    <th>Score</th>
+    <th>Status</th>
+    {% if user.is_authenticated %}
+    <th>Actions</th>
+    {% endif %}
+  </tr>
+  {% for fixture in fixtures %}
+  <tr>
+    <td>{{ fixture.home_team }}</td>
+    <td>{{ fixture.away_team }}</td>
+    <td>{{ fixture.match_date }}</td>
+    <td>{{ fixture.home_score }} - {{ fixture.away_score }}</td>
+    <td>{{ fixture.get_status_display }}</td>
+    {% if user.is_authenticated %}
+    <td>
+      <a href="{% url 'edit-fixture' fixture.id %}">✏️ Edit</a> | 
+      <a href="{% url 'delete-fixture' fixture.id %}">🗑 Delete</a>
+    </td>
+    {% endif %}
+  </tr>
+  {% empty %}
+  <tr><td colspan="6">No fixtures available.</td></tr>
+  {% endfor %}
+</table>
 {% endblock %}

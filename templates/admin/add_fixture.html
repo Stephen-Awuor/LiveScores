@@ -1,0 +1,38 @@
+{% extends 'base/admin_dashboard.html' %}
+
+{% block title %}Add Fixture{% endblock %}
+
+{% block content %}
+
+<div class="container mt-0">
+   <h2 class="mb-4">➕ Add Fixture</h2>
+    
+   <form method="post" class="card p-4 shadow-sm">
+        {% csrf_token %}
+
+        <!-- Display non-field errors (e.g., validation that applies to the whole form) -->
+        {% if form.non_field_errors %}
+            <div class="alert alert-danger">
+                {{ form.non_field_errors }}
+            </div>
+        {% endif %}
+
+        <!-- Render each field with its errors -->
+        {% for field in form %}
+            <div class="mb-3">
+                {{ field.label_tag }}
+                {{ field }}
+                {% if field.errors %}
+                    <div class="text-danger">
+                        {{ field.errors|striptags }}
+                    </div>
+                {% endif %}
+            </div>
+        {% endfor %}
+
+        <button type="submit" class="btn btn-success">Save Fixture</button>
+        <a href="{% url 'admin_dashboard' %}" class="btn btn-secondary">Cancel</a>
+   </form>
+</div>
+
+{% endblock %}
