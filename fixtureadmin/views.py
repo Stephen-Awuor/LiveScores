@@ -22,19 +22,19 @@ def add_fixture(request):
     return render(request, 'admin/add_fixture.html', {'form': form})
 
 
-def edit_fixture(request, fixture_id):
+def fixture_edit(request, fixture_id):
     fixture_obj = get_object_or_404(Fixture, pk=fixture_id)
     form = FixtureForm(request.POST or None, instance=fixture_obj)
     if request.method == 'POST' and form.is_valid():
         form.save()
         messages.success(request, 'Changes successfully saved')
         return redirect('admin_dashboard') 
-    return render(request, 'admin/adit_fixture.html', {'form': form, 'fixture_obj': fixture_obj})
+    return render(request, 'admin/edit_fixture.html', {'form': form, 'fixture_obj': fixture_obj})
 
 
-def delete_fixture(request, fixture_id):
+def fixture_delete(request, fixture_id):
     fixture_obj = get_object_or_404(Fixture, pk=fixture_id)
     if request.method == "POST":
         fixture_obj.delete()
         return redirect('admin_dashboard') 
-    return render(request, 'admin/adit_fixture.html', {'fixture_obj': fixture_obj})
+    return render(request, 'admin/confirm_delete_fixture.html', {'fixture_obj': fixture_obj})

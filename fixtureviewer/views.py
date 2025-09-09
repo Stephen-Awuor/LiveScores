@@ -7,8 +7,8 @@ from fixtureadmin.models import Fixture
 # Create your views here.
 
 def dashboard(request):
-    fixtures = Fixture.objects.all()
-    return render(request, 'viewer/livescore.html' , {'teams': fixtures})
+    fixtures = Fixture.objects.all().order_by('-match_date')
+    return render(request, 'viewer/livescore.html', {'fixtures': fixtures})
 
 def season_teams(request):
     teams = Teams.objects.all()

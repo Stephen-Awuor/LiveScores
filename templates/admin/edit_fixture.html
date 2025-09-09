@@ -1,0 +1,31 @@
+{% extends 'base/admin_dashboard.html' %}
+
+{% block title %}Adit Fixture{% endblock %}
+
+{% block content %}
+  <h2 class="mb-3">✏️ Edit Fixture</h2>
+  <form method="post" class="card p-4 shadow-sm">
+    {% csrf_token %}
+    <div class="row g-3">
+      <div class="col-md-6">{{ form.home_team.label_tag }} {{ form.home_team }}</div>
+      <div class="col-md-6">{{ form.away_team.label_tag }} {{ form.away_team }}</div>
+      <div class="col-md-6">{{ form.match_date.label_tag }} {{ form.match_date }}</div>
+      <div class="col-md-3">{{ form.home_score.label_tag }} {{ form.home_score }}</div>
+      <div class="col-md-3">{{ form.away_score.label_tag }} {{ form.away_score }}</div>
+      <div class="col-md-6">{{ form.status.label_tag }} {{ form.status }}</div>
+    </div>
+
+    {% if form.errors %}
+      <div class="alert alert-danger mt-3">
+        <strong>Form errors:</strong>
+        <ul>
+          {% for field, errors in form.errors.items %}
+            <li><strong>{{ field }}:</strong> {{ errors|striptags }}</li>
+          {% endfor %}
+        </ul>
+      </div>
+    {% endif %}
+
+    <button class="btn btn-primary mt-3">Update</button>
+  </form>
+{% endblock %}

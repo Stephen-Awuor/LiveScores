@@ -3,6 +3,7 @@ from django.contrib.auth.forms import AuthenticationForm
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
+from fixtureadmin.models import Fixture
 
 def admin_login(request):
     if request.method == "POST":
@@ -24,7 +25,8 @@ def admin_login(request):
 
 @login_required
 def admin_dashboard(request):
-    return render(request, "base/admin_dashboard.html")
+    fixtures = Fixture.objects.all().order_by('-match_date')
+    return render(request, 'base/admin_dashboard.html', {'fixtures': fixtures})
 
 def admin_logout(request):
     logout(request)
