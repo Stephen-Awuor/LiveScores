@@ -1,3 +1,5 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,49 +7,8 @@
   <title>{% block title %}⚽ Admin Dashboard{% endblock %}</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
 
-  <style>
-    body {
-      background-color: #f8f9fa;
-    }
-    .sidebar {
-      height: 100vh;
-      background-color: #356e06;
-      padding-top: 1rem;
-      position: fixed;
-      width: 220px;
-    }
-    .sidebar a {
-      color: #ffffff;
-      display: block;
-      padding: 0.75rem 1.25rem;
-      text-decoration: none;
-    }
-    .sidebar a:hover {
-      background-color: #495057;
-      color: #ffc107;
-    }
-    .main-content {
-      margin-left: 220px;
-      padding: 2rem;
-    }
-      h2 { text-align: center; }
-      table { width: 100%; border-collapse: collapse; margin-top: 20px; }
-      th, td { border: 1px solid #ccc; padding: 10px; text-align: center; }
-      th { background-color: #f4f4f4; }
-      a.button { 
-      padding: 5px 10px; 
-      background-color: #007BFF; 
-      color: white; 
-      text-decoration: none; 
-      border-radius: 4px; 
-    }
-    a.button.delete { background-color: #DC3545; }
-    a.button.add { margin-top: 10px; display: inline-block; }
-    .status-upcoming { color: orange; font-weight: bold; }
-    .status-live { color: green; font-weight: bold; }
-    .status-finished { color: gray; font-weight: bold; }
-  </style>
 </head>
 <body>
 

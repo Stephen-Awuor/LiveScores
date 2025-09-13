@@ -17,8 +17,6 @@ def admin_login(request):
                 return redirect('admin_dashboard')  # redirect after login
             else:
                 messages.error(request, "Invalid username or password.")
-        else:
-            messages.error(request, "Invalid username or password.")
     else:
         form = AuthenticationForm()
     return render(request, "admin/login.html", {"form": form})

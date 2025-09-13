@@ -22,8 +22,7 @@
             <tr>
                 <th></th>
                 <th>Team/School Name</th>
-                <th>Age Group</th>
-                <th>Gender</th>
+                <th>Coach</th>
                 <th>Sport</th>
                 {% if user.is_authenticated %}
                 <th>Coach</th>
@@ -37,8 +36,7 @@
             <tr>
                 <td>{{ forloop.counter }}</td>
                 <td>{{ team.team_name }}</td>
-                <td>{{ team.age_group }}</td>
-                <td>{{ team.gender}}</td>
+                <td>{{ team.coach}}</td>
                 <td>{{ team.sport }}</td>
                 {% if user.is_authenticated %}
                 <td>{{ team.coach }}</td>
