@@ -1,0 +1,69 @@
+
+{% extends 'base/admin_dashboard.html' %}
+{% block title %}Fixture Reports{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2 class="mb-3">📊 Fixture Reports</h2>
+
+    <form method="get" class="mb-3">
+        <label for="status" class="me-2">Filter by Status:</label>
+        <select name="status" id="status" class="form-select w-auto d-inline-block" onchange="this.form.submit()">
+            <option value="all" {% if selected_status == "all" %}selected{% endif %}>All</option>
+            <option value="upcoming" {% if selected_status == "upcoming" %}selected{% endif %}>Upcoming</option>
+            <option value="live" {% if selected_status == "live" %}selected{% endif %}>Live</option>
+            <option value="finished" {% if selected_status == "finished" %}selected{% endif %}>Finished</option>
+        </select>
+    </form>
+
+    <div id="report-section">
+        <table class="table table-bordered table-striped">
+            <thead class="table-dark">
+                <tr>
+                    <th>Home Team</th>
+                    <th>Away Team</th>
+                    <th>Status</th>
+                    <th>Date & Time</th>
+                    <th>Score</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for fixture in fixtures %}
+                <tr>
+                    <td>{{ fixture.home_team }}</td>
+                    <td>{{ fixture.away_team }}</td>
+                    <td>{{ fixture.get_status_display }}</td>
+                    <td>{{ fixture.match_date|date:"Y-m-d H:i" }}</td>
+                    <td>
+                        {% if fixture.status == "finished" %}
+                            {{ fixture.home_score }} - {{ fixture.away_score }}
+                        {% else %}
+                            N/A
+                        {% endif %}
+                    </td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="5" class="text-center">No fixtures found.</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <button class="btn btn-secondary" onclick="printReport()">🖨️ Print Report</button>
+</div>
+
+<script>
+function printReport() {
+    var content = document.getElementById("report-section").innerHTML;
+    var myWindow = window.open("", "", "width=800,height=600");
+    myWindow.document.write("<html><head><title>Fixture Report</title>");
+    myWindow.document.write("<link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css'>");
+    myWindow.document.write("</head><body>");
+    myWindow.document.write(content);
+    myWindow.document.write("</body></html>");
+    myWindow.document.close();
+    myWindow.print();
+}
+</script>
+{% endblock %}

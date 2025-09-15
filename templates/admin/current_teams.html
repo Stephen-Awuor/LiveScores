@@ -13,11 +13,12 @@
             </form>
             {% if user.is_authenticated %}
                 <a href="{% url 'add-team' %}" class="btn btn-sm btn-success me-1">+ Add Team</a>
-                <a href="" class="btn btn-sm btn-secondary"> Print</a>
+                <button class="btn btn-secondary" onclick="printReport()">🖨️ Print</button>
             {% endif %}
         </div>
     </div>
 
+    <div id="report-section">
     <table class="table table-bordered table-striped">
         <thead class="table-dark">
             <tr>
@@ -49,5 +50,28 @@
             {% endfor %}
         </tbody>
     </table>
+    </div>
 </div>
+<style>
+/* 🔹 Hide "Actions" column in print */
+@media print {
+    .no-print {
+        display: none !important;
+    }
+}
+</style>
+
+<script>
+function printReport() {
+    var content = document.getElementById("report-section").innerHTML;
+    var myWindow = window.open("", "", "width=800,height=600");
+    myWindow.document.write("<html><head><title>Current Teams</title>");
+    myWindow.document.write("<link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css'>");
+    myWindow.document.write("</head><body>");
+    myWindow.document.write(content);
+    myWindow.document.write("</body></html>");
+    myWindow.document.close();
+    myWindow.print();
+}
+</script>
 {% endblock %}

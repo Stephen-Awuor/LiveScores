@@ -40,3 +40,18 @@ def fixture_delete(request, fixture_id):
         fixture_obj.delete()
         return redirect('admin_dashboard') 
     return render(request, 'admin/confirm_delete_fixture.html', {'fixture_obj': fixture_obj})
+
+
+def reports_view(request):
+    status = request.GET.get("status", "all")
+
+    if status == "all":
+        fixtures = Fixture.objects.all().order_by("match_date")
+    else:
+        fixtures = Fixture.objects.filter(status=status).order_by("match_date")
+
+    context = {
+        "fixtures": fixtures,
+        "selected_status": status,
+    }
+    return render(request, "admin/reports.html", context)

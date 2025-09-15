@@ -78,3 +78,7 @@
   background-color: #495057;
   color: #ffc107;
 }
+
+@media print {
+  .no-print { display: none !important; }
+}

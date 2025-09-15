@@ -13,24 +13,11 @@
   <body>
     
   <div class="sidebar">
-    <h4 class="text-white text-center mb-4"> Administrator </h4>
-    
+    <h4 class="text-white text-center mb-4"> Fixture Admin </h4>
     <a href="{% url 'current-fixtures' %}">Fixtures</a>
     <a href="{% url 'current-teams' %}">Teams</a>
-
-  <div class="dropdown sidebar-dropdown">
-  <a class="dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-    Reports
-  </a>
-  <ul class="dropdown-menu">
-    <li><a class="dropdown-item" href="#">Upcoming Fixtures</a></li>
-    <li><a class="dropdown-item" href="#">Live Fixtures</a></li>
-    <li><a class="dropdown-item" href="#">Finished Fixtures</a></li>
-    <li><a class="dropdown-item" href="#">Teams</a></li>
-  </ul>
-</div>
-
-
+    <a href="{% url 'fixture-reports' %}">Reports</a>
+    <a href="#">Latest News</a>
     <a href="{% url 'logout' %}">Logout</a>
   </div>
 
@@ -56,7 +43,6 @@
             </form>
             {% if user.is_authenticated %}
                 <a href="{% url 'add-fixture' %}" class="btn btn-sm btn-success me-1">+ Add Fixture</a>
-                <a href="" class="btn btn-sm btn-secondary"> Print</a>
             {% endif %}
         </div>
     </div>

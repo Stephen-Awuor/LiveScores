@@ -14,3 +14,7 @@ def season_teams(request):
     teams = Teams.objects.all()
     return render(request, 'viewer/teams.html' , {'teams': teams})
 
+def latest_news(request):
+   
+    return render(request, "viewer/blog.html")
+
