@@ -9,4 +9,5 @@ urlpatterns = [
     path('', include('accounts.urls')),
     path('', include('fixtureadmin.urls')),
     path('', include('teams.urls')),
+    path('', include('blog.urls')),
 ]

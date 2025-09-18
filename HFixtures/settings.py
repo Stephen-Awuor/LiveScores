@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'fixtureviewer',
     'teams',
     'accounts',
+    'blog',
     'widget_tweaks',
 ]
 

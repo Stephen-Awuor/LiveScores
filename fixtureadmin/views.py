@@ -18,7 +18,7 @@ def add_fixture(request):
         if form.is_valid():
             form.save()
             messages.success(request, 'Fixture successfully saved')
-            return redirect('admin_dashboard')
+            return redirect('manage')
     else:
         form = FixtureForm()
     return render(request, 'admin/add_fixture.html', {'form': form})

@@ -9,4 +9,5 @@ urlpatterns = [
    path('dashboard/', views.dashboard, name='dashboard'),
    path('teams/', views.season_teams, name='teams'),
    path('latest-news/', views.latest_news, name='latest-news'),
+    path('news-detail/<int:news_id>/edit/', views.news_detail, name='news-detail'),
 ]

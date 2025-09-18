@@ -1,0 +1,26 @@
+{% extends 'base/main.html' %}
+
+{% block title %}Latest News{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2 class="mb-4">Latest News This Academic Year</h2>
+
+    {% for news in news %}
+    <div class="card shadow-sm mb-4">
+        <div class="card-body">
+            <h4 class="card-title">{{ news.title }}</h4>
+            
+            <p class="card-text">{{ news.content|truncatewords:40 }}</p>
+            <p class="text-muted small">
+                Published on {{ news.created_at|date:"M d, Y H:i" }} 
+                {% if news.author %} by {{ news.author.username }}{% endif %}
+            </p>
+            <a href="{% url 'news-detail' news.id %}" class="btn btn-outline-primary btn-sm">Read More</a>
+        </div>
+    </div>
+    {% empty %}
+    <p class="text-muted">No news articles available yet.</p>
+    {% endfor %}
+</div>
+{% endblock %}
