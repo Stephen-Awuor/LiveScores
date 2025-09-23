@@ -12,7 +12,7 @@
             <form method="post">
                 {% csrf_token %}
                 {% for field in form %}
-                <div class="mb-3">
+                <div class="mb-10">
                     <label class="form-label fw-bold">{{ field.label }}</label>
                     {{ field }}
                     {% if field.errors %}
@@ -25,7 +25,7 @@
 
                 <div class="d-flex justify-content-end">
                     <a href="{% url 'manage-news' %}" class="btn btn-secondary me-2">Cancel</a>
-                    <button type="submit" class="btn btn-warning">Update News</button>
+                    <button type="submit" class="btn btn-warning">Update</button>
                 </div>
             </form>
         </div>

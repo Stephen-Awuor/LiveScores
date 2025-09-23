@@ -11,14 +11,23 @@
 
   </head>
   <body>
-    
   <div class="sidebar">
     <h4 class="text-white text-center mb-4"> Fixture Admin </h4>
     <a href="{% url 'current-fixtures' %}">Manage Fixtures</a>
     <a href="{% url 'current-teams' %}">Manage Teams</a>
     <a href="{% url 'fixture-reports' %}">Reports</a>
     <a href="{% url 'manage-news' %}">Manage Blog</a>
-    <a href="{% url 'logout' %}">Logout</a>
+    <!-- Dropdown link -->
+  <li class="nav-item dropdown">
+    <a class="nav-link dropdown-toggle text-white" href="#" id="accountDropdown" 
+       role="button" data-bs-toggle="dropdown" aria-expanded="false">
+      Account
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="accountDropdown">
+      <li><a class="dropdown-item" href="{% url 'manage-profile' %}">Profile</a></li>
+      <li><a class="dropdown-item" href="{% url 'logout' %}">Logout</a></li>
+    </ul>
+  </li>
   </div>
 
 <div class="container mt-4">

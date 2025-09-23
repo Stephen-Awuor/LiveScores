@@ -40,45 +40,23 @@
     .status-live { color: green; font-weight: bold; }
     .status-finished { color: gray; font-weight: bold; }
 
-   /* Sidebar dropdown (make it match sidebar links) */
-.sidebar-dropdown .dropdown-toggle {
-  color: #ffffff;
-  display: block;
-  padding: 0.75rem 1.25rem;
-  text-decoration: none;
-  width: 100%;
+    /* Sidebar dropdown menu style */
+.sidebar .dropdown-menu {
+  background-color: #2d6a04;   /* match sidebar green or a slightly darker shade */
+  border: none;                /* remove border */
+  min-width: 100%;             /* full width under Account */
 }
 
-.sidebar-dropdown .dropdown-toggle::after {
-  float: right;
-  margin-top: 0.3rem;
+.sidebar .dropdown-item {
+  color: #fff;                 /* white text */
 }
 
-/* Dropdown menu inside sidebar */
-.sidebar-dropdown .dropdown-menu {
-  position: static !important; /* keep it inside sidebar flow */
-  float: none;
-  background-color: #2d4e05; /* darker green to blend */
-  border: none;
-  width: 100%;
-  margin: 0;
-  padding: 0;
-  box-shadow: none; /* remove bootstrap shadow */
-}
-
-/* Dropdown items */
-.sidebar-dropdown .dropdown-item {
-  color: #ffffff;
-  padding: 0.75rem 1.25rem;
-  display: block;
-  width: 100%;
-}
-
-.sidebar-dropdown .dropdown-item:hover {
-  background-color: #495057;
-  color: #ffc107;
+.sidebar .dropdown-item:hover {
+  background-color: #397d09;   /* lighter green on hover */
+  color: #fff;
 }
 
 @media print {
   .no-print { display: none !important; }
 }
+

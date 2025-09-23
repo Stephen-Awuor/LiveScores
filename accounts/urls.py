@@ -7,5 +7,6 @@ urlpatterns = [
    # Auth
    path('admin-login/', views.admin_login, name='admin-login'),
    path('admin_dashboard/', views.admin_dashboard, name='admin_dashboard'),
+   path('manage-profile/', views.manage_profile, name='manage-profile'),
    path('logout/', views.admin_logout, name='logout'),
 ]
